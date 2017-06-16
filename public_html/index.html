@@ -17,53 +17,12 @@ and open the template in the editor.
                 <legend>Registration Form</legend>
 
 
-                First Name: <input style="color: red" type="text" value="enter your firstname" id ='firstName' 
-                                   onblur="if (this.value == '')
-                              {
-                                  this.style.color = '#f00';
-                                  this.value = 'enter your firstname'
-                              }"
-                                   onfocus="if (this.value == 'enter your firstname')
-                              {
-                                  this.style.color = 'black';
-                                  this.value = ''
-                              }"> <br>
-                Last Name: <input style="color: red" type="text" value="enter your lastname" id ='lastName' 
-                                  onblur="if (this.value == '')
-                              {
-                                  this.style.color = '#f00'; this.value = 'enter your lastname'}"
-                                  onfocus="if (this.value == 'enter your lastname')
-                              {
-                                  this.style.color = 'black';
-                                  this.value = ''
-                              }"> </br>
-                User Name:  <input style="color: red" type="text" value="enter your username" id ='userName'
-                                   onblur="if (this.value == '')
-                               {
-                                   this.style.color = '#f00';
-                                   this.value = 'enter your username'
-                               }"
-                                   onfocus="if (this.value == 'enter your username')
-                                {
-                                    this.style.color = 'black'; this.value = ''}"> <br>
-                Password:  
-                <input style="color: red" type="password" value="password" id ='password' onblur="if (this.value == '')
-            {
-                this.style.color = '#f00';
-                this.value = 'password'
-            }"
-                       onfocus="if (this.value == 'password')
-               {
-                   this.style.color = 'black';
-                   this.value = ''
-               }"> <br>
-                Email : <input style="color: red" type="text" value="Your email" id ='email' onblur="if (this.value == '')
-             {
-                 this.style.color = '#f00';
-                 this.value = 'Your email'}"
-                               onfocus="if (this.value == 'Your email')
-               {
-                   this.style.color = 'black'; this.value = ''}"><br/>
+                First Name: <input  type="text"  id ='firstName' >
+                              
+                 Last Name: <input type="text" id ='lastName' > </br>
+                User Name:  <input type="text" id ='userName'></br>
+                Password:    <input  type="password"  id ='password' > </br>
+                Email : <input  type="text"  id ='email' ></br>
                 Gender 
                 <input type="radio" name="Gender"  value="1" id = 'male'/> Male
                 <input type="radio" name="Gender"  value="2" id = 'female'/> Female <br/> <br/>
@@ -71,6 +30,9 @@ and open the template in the editor.
 
             </fieldset>
         </form>
+        <button onclick="displayTable()"> Read Data</button>
+        
+        <div id ="display"></div>
 
 
 
