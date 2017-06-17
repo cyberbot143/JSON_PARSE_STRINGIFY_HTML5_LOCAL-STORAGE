@@ -3,86 +3,55 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-   var myarr = ['bbbcd', 'aaaaak', 'cdbjdd','hchgbbb'];
-   function maxOccur(myarr) {
- 
- var inputArray =myarr;
-    console.log(inputArray);
-    
-    var testArray = [];
-    for (var a = 0; a < inputArray.length; a++) {
-        var arr = inputArray[a];
-         var max = 0;
-        for (var i = 0; i < arr.length; i++) {
-           var count = 0; 
-            for (var j = 0; j <= arr.length; j++) {
-                if (arr[j] == arr[i]) {
-                    count++;
-                    if (max < count)
-                    {
-                        max = count;
-                    }
-                }
-            }
-            
-        }
-        testArray.push(max);
-    }
-    console.log(testArray);
-    var max = testArray[0];
-    var maxIndex = 0;
+//   var myarr = ['bbbcd', 'aaaaak', 'cdbjdd','hchgbbb'];
+//   function maxOccur(myarr) {
+// 
+// var inputArray =myarr;
+//    console.log(inputArray);
+//    
+//    var testArray = [];
+//    for (var a = 0; a < inputArray.length; a++) {
+//        var arr = inputArray[a];
+//         var max = 0;
+//        for (var i = 0; i < arr.length; i++) {
+//           var count = 0; 
+//            for (var j = 0; j <= arr.length; j++) {
+//                if (arr[j] == arr[i]) {
+//                    count++;
+//                    if (max < count)
+//                    {
+//                        max = count;
+//                    }
+//                }
+//            }
+//            
+//        }
+//        testArray.push(max);
+//    }
+//    console.log(testArray);
+//    var max = testArray[0];
+//    var maxIndex = 0;
+//
+//    for (var a = 1; a < testArray.length; a++) {
+//        console.log(a);
+//        if (testArray[a] > max) {
+//
+//            maxIndex = a;
+//            max = testArray[a];
+//        }
+//    }
+//    console.log(inputArray[maxIndex]);
+//    return inputArray[maxIndex];
+//}
+//
+//maxOccur(myarr);
 
-    for (var a = 1; a < testArray.length; a++) {
-        console.log(a);
-        if (testArray[a] > max) {
-
-            maxIndex = a;
-            max = testArray[a];
-        }
-    }
-    console.log(inputArray[maxIndex]);
-    return inputArray[maxIndex];
-}
-
-maxOccur(myarr);
 
 
-function displayTable(){
-    
-    
-        
-     var retrievedObject = localStorage.getItem("userList");
-     var parsedObject1 = JSON.parse(retrievedObject)
-     var html = "<table id='dataTable' border='1|1'>";
-    html+="<tr>";
-    for (var key in parsedObject1[0]){
-        html+="<th>"+key+"</th>";
-    }
-    html+="</tr>";
-      for (var i in parsedObject1 ) {
-      
-        html+="<tr id='parsedObject1[i]'>";
-        html+="<td>"+parsedObject1[i].Firstname+"</td>";
-        html+="<td>"+parsedObject1[i].lastname+"</td>";
-        html+="<td>"+parsedObject1[i].userName+"</td>";
-        html+="<td>"+parsedObject1[i].password+"</td>";
-        html+="<td>"+parsedObject1[i].email+"</td>";
-        html+="<td>"+parsedObject1[i].gender+"</td>";
-        html+="</tr>";
-    }
-    html+="</table>";
-if(localStorage.userList!==null){
-document.getElementById('display').innerHTML = html;
-}
-else{
-document.getElementById('display').innerHTML += html;
-}
-
-}
-
-var myArray = [];
+var user = {};
 function Validate() {
-    var user = {};
+    // initialize myarray from localstorage
+    var myArray =JSON.parse(localStorage.getItem('userList'));
     var flag = true;
 
     var fname = document.getElementById('firstName').value;
@@ -123,6 +92,7 @@ function Validate() {
         x = "";
         flag = false;
     }
+    // if every field is filled
     if (flag == true)
     {
         // Create an object and then push into local storage 
@@ -139,12 +109,40 @@ function Validate() {
         
         displayTable();
        
-  document.getElementById("myForm").reset();
-
-
-            
-
-        
+  document.getElementById("myForm").reset();        
     }
 }
-;
+window.onload = function displayTable(){ 
+     var retrievedObject = localStorage.getItem("userList");
+     var parsedObject1 = JSON.parse(retrievedObject)
+     var html = "<table id='dataTable' border='1|1'>";
+    html+="<tr>";
+    for (var key in parsedObject1[0]){
+        html+="<th>"+key+"</th>";
+    }
+    html+="</tr>";
+      for (var i in parsedObject1 ) {
+      
+        html+="<tr id='parsedObject1[i]'>";
+        html+="<td>"+parsedObject1[i].Firstname+"</td>";
+        html+="<td>"+parsedObject1[i].lastname+"</td>";
+        html+="<td>"+parsedObject1[i].userName+"</td>";
+        html+="<td>"+parsedObject1[i].password+"</td>";
+        html+="<td>"+parsedObject1[i].email+"</td>";
+        html+="<td>"+parsedObject1[i].gender+"</td>";
+        html+="</tr>";
+    }
+    html+="</table>";
+if(localStorage.userList!==null){
+    
+document.getElementById('display').innerHTML = html;
+}
+
+else{
+    
+document.getElementById('display').innerHTML += html;
+}
+
+}
+
+
