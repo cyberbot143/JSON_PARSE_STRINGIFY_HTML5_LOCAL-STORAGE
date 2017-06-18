@@ -17,12 +17,27 @@ and open the template in the editor.
                 <legend>Registration Form</legend>
 
 
-                First Name: <input  type="text"  id ='firstName' >
+                First Name: <input  type="text"  id ='firstName'  onblur="if(this.value ==''){
+                    document.getElementById('firstNameErr').innerHTML = 'Enter your first name'; 
+                    
+                }"
+                onfocus=" if(this.length != 0) {
+                    document.getElementById('firstNameErr').innerHTML = '';
+                    }
+                      else{
+                          document.getElementById('firstNameErr').innerHTML = 'XXXX';
+                          
+                      }              ">
+                                      <p id = "firstNameErr"></p>
                               
                  Last Name: <input type="text" id ='lastName' > </br>
+                 <p id = "err2"/>
                 User Name:  <input type="text" id ='userName'></br>
+                <p id = "err3"/>
                 Password:    <input  type="password"  id ='password' > </br>
+                <p id = "err4"/>
                 Email : <input  type="text"  id ='email' ></br>
+                <p id = "err5"/>
                 Gender 
                 <input type="radio" name="Gender"  value="1" id = 'male'/> Male
                 <input type="radio" name="Gender"  value="2" id = 'female'/> Female <br/> <br/>

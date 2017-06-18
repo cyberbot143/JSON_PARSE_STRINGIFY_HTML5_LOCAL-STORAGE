@@ -57,14 +57,14 @@ function Validate() {
     var fname = document.getElementById('firstName').value;
     if (fname.length == 0)
     {
-        document.getElementById('firstName').insertAdjacentHTML('afterend', "Please enter value");
         flag = false;
+        
     }
 
     var lname = document.getElementById('lastName').value;
     if (lname.length == 0)
     {
-        console.log('Enter your last name');
+        document.getElementById('err2').innerHTML = "Enter your last name";
         flag = false;
     }
     var uname = document.getElementById('userName').value;
