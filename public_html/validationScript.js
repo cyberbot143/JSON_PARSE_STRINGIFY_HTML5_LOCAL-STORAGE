@@ -46,17 +46,40 @@
 //
 //maxOccur(myarr);
 
+window.onload = function(){
+    displayTable();
+    
+};
 
-
-var user = {};
 function Validate() {
+    
     // initialize myarray from localstorage
+    if(localStorage.getItem("userList")){
     var myArray =JSON.parse(localStorage.getItem('userList'));
+    
+   }
+   else{
+      var  myArray = new Array();
+   }
     var flag = true;
-
+    //radio button validation
+      var x = "";
+    if (document.getElementById('male').checked) {
+        document.getElementById('genderErr').innerHTML = ""; 
+        x = "male";
+    } else if (document.getElementById('female').checked) {
+        document.getElementById('genderErr').innerHTML = ""; 
+        x = "female";
+    } else {
+           document.getElementById('genderErr').innerHTML = "gender *"; 
+        x = "";
+        flag = false;
+    }
     var fname = document.getElementById('firstName').value;
+    
     if (fname.length == 0)
     {
+        document.getElementById('firstNameErr').innerHTML = "Enter your first Name";
         flag = false;
         
     }
@@ -64,37 +87,33 @@ function Validate() {
     var lname = document.getElementById('lastName').value;
     if (lname.length == 0)
     {
-        document.getElementById('err2').innerHTML = "Enter your last name";
+        document.getElementById('lastNameErr').innerHTML = "Enter your last name";
         flag = false;
     }
     var uname = document.getElementById('userName').value;
     if (uname.length == 0)
     {
-        console.log('Enter your user name');
+       document.getElementById('userNameErr').innerHTML = "Enter your user name";
         flag = false;
     }
     var pwd = document.getElementById('password').value;
     if (pwd.length == 0)
     {
-        console.log('Password Must not be empty');
+     document.getElementById('passwordErr').innerHTML = "Enter your password"; 
         flag = false;
     }
-    //radio button validation
-    var x = "";
-    if (document.getElementById('male').checked) {
-        console.log('you have checked male');
-        x = "male";
-    } else if (document.getElementById('female').checked) {
-        console.log('you have checked female');
-        x = "female";
-    } else {
-        console.log('blah blah');
-        x = "";
+    var mail = document.getElementById('email').value;
+    if(mail.length== 0){
+        document.getElementById('emailErr').innerHTML = "Enter your email"; 
         flag = false;
     }
+  
+
+  
     // if every field is filled
     if (flag == true)
     {
+       var user = {};
         // Create an object and then push into local storage 
         user['Firstname'] = document.getElementById('firstName').value;
         user['lastname'] = document.getElementById('lastName').value;
@@ -102,17 +121,14 @@ function Validate() {
         user['password'] = document.getElementById('password').value;
         user['email'] = document.getElementById('email').value;
         user['gender'] = x;
-
+        console.log(user);
         myArray.push(user);
-        console.log(myArray);
-        localStorage.setItem('userList', JSON.stringify(myArray));
-        
+        localStorage.setItem("userList", JSON.stringify(myArray));
         displayTable();
-       
-  document.getElementById("myForm").reset();        
+        document.getElementById("myForm").reset();        
     }
 }
-window.onload = function displayTable(){ 
+function displayTable(){ 
      var retrievedObject = localStorage.getItem("userList");
      var parsedObject1 = JSON.parse(retrievedObject)
      var html = "<table id='dataTable' border='1|1'>";
@@ -134,15 +150,11 @@ window.onload = function displayTable(){
     }
     html+="</table>";
 if(localStorage.userList!==null){
-    
-document.getElementById('display').innerHTML = html;
+    document.getElementById('display').innerHTML = html;
 }
-
 else{
-    
-document.getElementById('display').innerHTML += html;
-}
-
+    document.getElementById('display').innerHTML += html;
+    }
 }
 
 
